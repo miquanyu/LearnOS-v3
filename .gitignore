@@ -12,3 +12,4 @@ Cargo.lock
 .idea
 /os/target/
 /user/target/
+rust-toolchain
