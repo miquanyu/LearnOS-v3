@@ -1,5 +1,5 @@
-use crate::sbi::console_putchar;
 use core::fmt::{self, Write};
+use crate::sbi::console_putchar;
 
 struct Stdout;
 
@@ -30,37 +30,4 @@ macro_rules! println {
     }
 }
 
-#[macro_export]
-macro_rules! info {
-    ($fmt: literal $(, $($arg: tt)+)?) => {
-        $crate::console::print(format_args!("\x1b[34m[INFO][0] {:?}", format_args!(concat!($fmt, "\x1b[0m\n") $(, $($arg)+)?)));
-    }
-}
 
-#[macro_export]
-macro_rules! debug {
-    ($fmt: literal $(, $($arg: tt)+)?) => {
-        $crate::console::print(format_args!("\x1b[32m[DEBUG][0] {:?}", format_args!(concat!($fmt, "\x1b[0m\n") $(, $($arg)+)?)));
-    }
-}
-
-#[macro_export]
-macro_rules! warn {
-    ($fmt: literal $(, $($arg: tt)+)?) => {
-        $crate::console::print(format_args!("\x1b[93m[WARN][0] {:?}", format_args!(concat!($fmt, "\x1b[0m\n") $(, $($arg)+)?)));
-    }
-}
-
-#[macro_export]
-macro_rules! error {
-    ($fmt: literal $(, $($arg: tt)+)?) => {
-        $crate::console::print(format_args!("\x1b[31m[ERROR][0] {:?}", format_args!(concat!($fmt, "\x1b[0m\n") $(, $($arg)+)?)));
-    }
-}
-
-#[macro_export]
-macro_rules! trace {
-    ($fmt: literal $(, $($arg: tt)+)?) => {
-        $crate::console::print(format_args!("\x1b[90m[TRACE][0] {:?}", format_args!(concat!($fmt, "\x1b[0m\n") $(, $($arg)+)?)));
-    }
-}

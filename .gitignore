@@ -13,3 +13,5 @@ Cargo.lock
 /os/target/
 /user/target/
 rust-toolchain
+venv
+tools
